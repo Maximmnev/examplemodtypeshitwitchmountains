@@ -1,0 +1,19 @@
+{
+  "description": "CROSSBOWING",
+  "supported_items": [
+    "minecraft:crossbow"
+  ],
+  "primary_items": "minecraft:crossbow",
+  "weight": 100,
+  "max_level": 1,
+  "min_cost": {
+    "base": 3,
+    "per_level_above_first": 1
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 1
+  },
+  "anvil_cost": 990,
+  "slots": []
+}

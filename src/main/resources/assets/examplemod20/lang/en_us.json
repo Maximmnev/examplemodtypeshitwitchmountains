@@ -1,0 +1,13 @@
+{
+  "itemGroup.examplemod20": "Example Mod Tab",
+  "block.examplemod20.example_block": "Example Block",
+  "item.examplemod20.example_item": "Example Item",
+
+  "examplemod20.configuration.title": "Example Mod2.0 Configs",
+  "examplemod20.configuration.section.examplemod20.common.toml": "Example Mod2.0 Configs",
+  "examplemod20.configuration.section.examplemod20.common.toml.title": "Example Mod2.0 Configs",
+  "examplemod20.configuration.items": "Item List",
+  "examplemod20.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod20.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod20.configuration.magicNumber": "Magic Number"
+}
