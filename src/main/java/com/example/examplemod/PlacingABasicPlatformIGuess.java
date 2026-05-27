@@ -29,7 +29,7 @@ public class PlacingABasicPlatformIGuess {
         if (Objects.equals(platformtipe, "high")){
             block = Blocks.POWDER_SNOW.defaultBlockState();
         }
-        if (Objects.equals(platformtipe, "somewhere")){
+        if (Objects.equals(platformtipe, "middle")){
             block = Blocks.GRAY_CONCRETE.defaultBlockState();
         }
 

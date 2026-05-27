@@ -24,6 +24,7 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.Random;
 
@@ -114,7 +115,7 @@ public class EnchantmentParticleHandler {
 
                 BlockPos playerPos = player.blockPosition();
                 var one = new PlacingABasicPlatformIGuess(playerPos.offset(0,notthatfun,0),"low",level);
-                var two = new PlacingABasicPlatformIGuess(playerPos.offset(0,notthatun,0),"somewhere",level);
+                var two = new PlacingABasicPlatformIGuess(playerPos.offset(0,notthatun,0),"middle",level);
                 var numbertree = new PlacingABasicPlatformIGuess(playerPos.offset(0,notthatfn,0),"high",level);
 
 
@@ -163,6 +164,8 @@ public class EnchantmentParticleHandler {
             }
         }
     }
+
+
 
 
 
