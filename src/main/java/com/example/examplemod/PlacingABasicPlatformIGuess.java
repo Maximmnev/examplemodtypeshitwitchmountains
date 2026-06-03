@@ -22,15 +22,22 @@ public class PlacingABasicPlatformIGuess {
 
     public void platformmakingshit(BlockPos cords, Level level) {
         BlockState block =Blocks.GRASS_BLOCK.defaultBlockState();
+        BlockState bloc =Blocks.GRASS_BLOCK.defaultBlockState();
+
 
         if (Objects.equals(platformtipe, "low")){
-                block = Blocks.DEEPSLATE.defaultBlockState();
+            block = Blocks.DEEPSLATE.defaultBlockState();
+            bloc = Blocks.SLIME_BLOCK.defaultBlockState();
+
         }
         if (Objects.equals(platformtipe, "high")){
             block = Blocks.POWDER_SNOW.defaultBlockState();
+             bloc = Blocks.SLIME_BLOCK.defaultBlockState();
         }
         if (Objects.equals(platformtipe, "middle")){
             block = Blocks.GRAY_CONCRETE.defaultBlockState();
+             bloc = Blocks.SLIME_BLOCK.defaultBlockState();
+
         }
 
 
@@ -42,6 +49,15 @@ public class PlacingABasicPlatformIGuess {
 
 
         }
+        BlockPos platformPos = cords.offset(-2,0, 0);
+        level.setBlock(platformPos,bloc, 3);
+        BlockPos platformPo = cords.offset(2,0, 0);
+        level.setBlock(platformPo,bloc, 3);
+        BlockPos platformP = cords.offset(0,0, 2);
+        level.setBlock(platformP,bloc, 3);
+        BlockPos platform = cords.offset(0,0, -2);
+        level.setBlock(platform,bloc, 3);
+
     }
 
 

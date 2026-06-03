@@ -4,7 +4,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.block.DirtPathBlock;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.slf4j.Logger;
 
@@ -14,10 +16,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -63,6 +61,9 @@ public class ExampleMod20 {
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
     public static final DeferredRegister.Entities ENTITY_TYPES =
             DeferredRegister.createEntities(ExampleMod20.MODID);
+    public static final DeferredBlock<Block> BRIDGEBILD_BLOCK = BLOCKS.registerSimpleBlock("bridgebild_block", p -> p.mapColor(MapColor.STONE));
+    // Creates a new BlockItem with the id "examplemod20:example_block", combining the namespace and path
+    public static final DeferredItem<BlockItem> BRIDGEBILD_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("bridgebild_block_item",BRIDGEBILD_BLOCK );
 
 
     public static final Supplier<EntityType<PinkSlimeEntity>> MY_ENTITY = ENTITY_TYPES.registerEntityType(
@@ -72,9 +73,10 @@ public class ExampleMod20 {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.examplemod20")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> Items.PLAYER_HEAD.getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(EXAMPLE_ITEM.get());
+                output.accept(BRIDGEBILD_BLOCK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
     public static final ResourceKey<Enchantment> AMAFUNNYENCHANTMENT =
             ResourceKey.create(
@@ -86,6 +88,8 @@ public class ExampleMod20 {
                     Registries.ENCHANTMENT,
                     Identifier.fromNamespaceAndPath(ExampleMod20.MODID, "enchantnotfun")
             );
+
+
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

@@ -121,8 +121,8 @@ public class EnchantmentParticleHandler {
 
                 double newY = player.getY() + notthatfn+2;
                 player.teleportTo(player.getX(), newY, player.getZ());
-
                 player.addTag("has_spawned_platform");
+
             }
         }
     }
@@ -164,6 +164,7 @@ public class EnchantmentParticleHandler {
             }
         }
     }
+
 
 
 
