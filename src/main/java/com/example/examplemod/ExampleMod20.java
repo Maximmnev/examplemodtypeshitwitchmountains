@@ -61,8 +61,8 @@ public class ExampleMod20 {
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
     public static final DeferredRegister.Entities ENTITY_TYPES =
             DeferredRegister.createEntities(ExampleMod20.MODID);
-    public static final DeferredBlock<Block> BRIDGEBILD_BLOCK = BLOCKS.registerSimpleBlock("bridgebild_block", p -> p.mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "examplemod20:example_block", combining the namespace and path
+    public static final DeferredBlock<Block> BRIDGEBILD_BLOCK = BLOCKS.register("bridge_builder",
+                                                                                         () -> new BridgeBuilderBlock(BlockBehaviour.Properties.of().destroyTime(2.0f)));
     public static final DeferredItem<BlockItem> BRIDGEBILD_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("bridgebild_block_item",BRIDGEBILD_BLOCK );
 
 
