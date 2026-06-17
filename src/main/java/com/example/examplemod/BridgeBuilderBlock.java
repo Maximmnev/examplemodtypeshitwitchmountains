@@ -1,4 +1,5 @@
 package com.example.examplemod;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -27,7 +28,9 @@ public class BridgeBuilderBlock extends Block {
 
                 // Check if the adjacent block is an Oak Plank
                 if (neighborState.is(Blocks.OAK_PLANKS)) {
-                    generateBridge(level, pos, direction, 20);
+                    // Get the opposite direction to build away from the plank
+                    Direction oppositeDirection = direction.getOpposite();
+                    generateBridge(level, pos, oppositeDirection, 30);
                 }
             }
             return InteractionResult.SUCCESS;
@@ -36,7 +39,7 @@ public class BridgeBuilderBlock extends Block {
     }
 
     /**
-     * Generates a 20-block line of oak planks stretching out in the specified direction.
+     * Generates a 30-block line of oak planks stretching out in the specified direction.
      */
     private void generateBridge(Level level, BlockPos startPos, Direction direction, int length) {
         for (int i = 1; i <= length; i++) {
@@ -45,7 +48,7 @@ public class BridgeBuilderBlock extends Block {
 
             // Only place blocks if the target space is air or replaceable (e.g., water, grass)
             if (level.getBlockState(targetPos).canBeReplaced()) {
-                level.setBlockAndUpdate(targetPos, Blocks.OAK_PLANKS.defaultBlockState());
+                level.setBlockAndUpdate(targetPos, Blocks.PALE_OAK_PLANKS.defaultBlockState());
             }
         }
     }

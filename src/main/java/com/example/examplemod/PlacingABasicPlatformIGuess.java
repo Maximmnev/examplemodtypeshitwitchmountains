@@ -6,10 +6,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Objects;
+import java.util.Random;
 //import net.minecraft.world.phys.Vec3;
 
 
 public class PlacingABasicPlatformIGuess {
+    java.util.Random notfun = new Random();
+    int chestbutstillnotfun =notfun.nextInt(0,5);
+
     public BlockPos cordsmiddleblockpos;
     public String platformtipe;
     PlacingABasicPlatformIGuess(BlockPos cordsmiddleblockpos,String platformtipe,Level level){
@@ -23,6 +27,10 @@ public class PlacingABasicPlatformIGuess {
     public void platformmakingshit(BlockPos cords, Level level) {
         BlockState block =Blocks.GRASS_BLOCK.defaultBlockState();
         BlockState bloc =Blocks.GRASS_BLOCK.defaultBlockState();
+        if (this.chestbutstillnotfun == 4){
+            level.setBlock(cords.offset(0 ,1 ,0),Blocks.CHEST.defaultBlockState(), 3);
+
+        }
 
 
         if (Objects.equals(platformtipe, "low")){
