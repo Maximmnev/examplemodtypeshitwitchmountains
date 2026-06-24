@@ -1,9 +1,15 @@
 package com.example.examplemod;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
 
 import java.util.Objects;
 import java.util.Random;
@@ -29,6 +35,39 @@ public class PlacingABasicPlatformIGuess {
         BlockState bloc =Blocks.GRASS_BLOCK.defaultBlockState();
         if (this.chestbutstillnotfun == 4){
             level.setBlock(cords.offset(0 ,1 ,0),Blocks.CHEST.defaultBlockState(), 3);
+            if (level.isLoaded(cords.offset(0 ,1 ,0))) {
+                int randomslot = notfun.nextInt(0,27);
+                int randomsitemcount = notfun.nextInt(0,65);
+                int itemrandomizer = notfun.nextInt(0,4);
+                Item randomitem = Items.CHEST;
+                switch (itemrandomizer)
+                {
+                    case 0:
+                        randomitem = Items.GOLDEN_APPLE;
+                        break;
+
+                    case 1:
+                        randomitem = Items.STICK;
+                        break;
+
+                    case 2:
+                        randomitem = Items.IRON_SWORD;
+                        break;
+
+                    case 3:
+                        randomitem = Items.IRON_SPEAR;
+                        break;
+
+                    default:
+                        randomitem = Items.CHEST;
+                        break;
+                }
+
+                BlockEntity blockEntity = level.getBlockEntity(cords.offset(0 ,1 ,0));
+                ChestBlockEntity Cbe =(ChestBlockEntity)blockEntity;
+                ItemStack iteMstack = new ItemStack(randomitem,randomsitemcount);
+                Cbe.setItem(randomslot,iteMstack);
+            }
 
         }
 
