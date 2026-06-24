@@ -110,6 +110,7 @@ public class ExampleMod20 {
         NeoForge.EVENT_BUS.register(this);
 
         ENTITY_TYPES.register(modEventBus);
+        ModDataComponents.DATA_COMPONENTS.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
