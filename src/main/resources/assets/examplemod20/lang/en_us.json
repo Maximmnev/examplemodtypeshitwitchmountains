@@ -9,5 +9,8 @@
   "examplemod20.configuration.items": "Item List",
   "examplemod20.configuration.logDirtBlock": "Log Dirt Block",
   "examplemod20.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod20.configuration.magicNumber": "Magic Number"
+  "examplemod20.configuration.magicNumber": "Magic Number",
+
+  "attribute.name.examplemod20.air_jumps": "jump(s) in the air",
+  "tooltip.examplemod20.air_jumps_done": "Air jumps performed: %s"
 }

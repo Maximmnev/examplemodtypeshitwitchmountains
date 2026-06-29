@@ -11,10 +11,12 @@ public class ModDataComponents {
     public static final DeferredRegister.DataComponents DATA_COMPONENTS =
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, ExampleMod20.MODID);
 
-    // Маркер "эти ботинки дают двойной прыжок". Значение Boolean
-    // (можно Unit для чистого маркера, но Boolean удобнее включать/выключать).
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> DOUBLE_JUMP =
-            DATA_COMPONENTS.registerComponentType("double_jump", builder -> builder
-                    .persistent(Codec.BOOL)                      // пишется в NBT предмета / на диск
-                    .networkSynchronized(ByteBufCodecs.BOOL));   // синкается на клиент
+    // Счётчик: сколько раз ЭТИ ботинки подкинули игрока в воздухе.
+    // Мутабельные данные, привязанные к конкретному ItemStack и растущие со временем —
+    // то, что нельзя выразить атрибутом. persistent => пишется в NBT/на диск,
+    // networkSynchronized => уезжает на клиент (нужно для тултипа).
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> AIR_JUMP_COUNT =
+            DATA_COMPONENTS.registerComponentType("air_jump_count", builder -> builder
+                    .persistent(Codec.INT)
+                    .networkSynchronized(ByteBufCodecs.VAR_INT));
 }

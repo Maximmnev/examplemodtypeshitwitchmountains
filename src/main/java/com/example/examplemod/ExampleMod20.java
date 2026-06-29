@@ -8,6 +8,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.DirtPathBlock;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -97,6 +98,7 @@ public class ExampleMod20 {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerAttrs);
+        modEventBus.addListener(this::onAttributeModification);
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -110,6 +112,7 @@ public class ExampleMod20 {
         NeoForge.EVENT_BUS.register(this);
 
         ENTITY_TYPES.register(modEventBus);
+        ModAttributes.ATTRIBUTES.register(modEventBus);
         ModDataComponents.DATA_COMPONENTS.register(modEventBus);
 
         // Register the item to a creative tab
@@ -121,6 +124,12 @@ public class ExampleMod20 {
 
     public void registerAttrs(EntityAttributeCreationEvent event) {
         event.put(MY_ENTITY.get(), PinkSlimeEntity.createAttributes().build());
+    }
+
+    // Навешиваем наш атрибут на игрока, иначе модификатор с ботинок не на что применять
+    // (и getAttribute вернёт null).
+    private void onAttributeModification(EntityAttributeModificationEvent event) {
+        event.add(EntityType.PLAYER, ModAttributes.AIR_JUMPS);
     }
 
 
