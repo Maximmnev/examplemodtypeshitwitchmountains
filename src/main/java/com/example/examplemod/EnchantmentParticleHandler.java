@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,7 +18,12 @@ import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -106,6 +112,38 @@ public class EnchantmentParticleHandler {
 
         // Ensure this only runs on the server side
         if (!level.isClientSide()) {
+            Identifier id = Identifier.fromNamespaceAndPath(
+                    "examplemod20",
+                    "r"
+            );
+            if (level instanceof ServerLevel serverLevel) {
+
+                // 2. Call the zero-argument getter method (Mojang mappings)
+                StructureTemplateManager structureManager = serverLevel.getStructureManager();
+
+                // 3. Now you can use the manager methods
+                // Example: check if a position is inside a specific structure type
+                // structureManager.getStructureAt(blockPos, myStructure)...
+
+
+                StructureTemplate template = structureManager
+                        .get(id)
+                        .orElseThrow();
+
+                BlockPos pos = new BlockPos((int)player.getX(), (int) player.getY(), (int)player.getZ());
+
+                StructurePlaceSettings settings = new StructurePlaceSettings()
+                        .setIgnoreEntities(false);
+
+                template.placeInWorld(
+                        (ServerLevelAccessor) level,
+                        pos,
+                        pos,
+                        settings,
+                        level.getRandom(),
+                        2
+                );
+            }
             // Check if the player has a custom tag to identify if they've joined before
             if (!player.entityTags().contains("has_spawned_platform")) {
                 java.util.Random notfun = new Random();
