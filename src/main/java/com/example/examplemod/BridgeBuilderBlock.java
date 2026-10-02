@@ -30,7 +30,7 @@ public class BridgeBuilderBlock extends Block {
                 if (neighborState.is(Blocks.OAK_PLANKS)) {
                     // Get the opposite direction to build away from the plank
                     Direction oppositeDirection = direction.getOpposite();
-                    generateBridge(level, pos, oppositeDirection, 30);
+                    generateBridge(level, pos, oppositeDirection, 100);
                 }
             }
             return InteractionResult.SUCCESS;

@@ -114,7 +114,7 @@ public class EnchantmentParticleHandler {
         if (!level.isClientSide()) {
             Identifier id = Identifier.fromNamespaceAndPath(
                     "examplemod20",
-                    "r"
+                    "flotingrock"
             );
             if (level instanceof ServerLevel serverLevel) {
 

@@ -37,8 +37,8 @@ public class PlacingABasicPlatformIGuess {
             level.setBlock(cords.offset(0 ,1 ,0),Blocks.CHEST.defaultBlockState(), 3);
             if (level.isLoaded(cords.offset(0 ,1 ,0))) {
                 int randomslot = notfun.nextInt(0,27);
-                int randomsitemcount = notfun.nextInt(0,65);
-                int itemrandomizer = notfun.nextInt(0,4);
+                int randomsitemcount = notfun.nextInt(0,128);
+                int itemrandomizer = notfun.nextInt(0,5);
                 Item randomitem = Items.CHEST;
                 switch (itemrandomizer)
                 {
@@ -56,6 +56,9 @@ public class PlacingABasicPlatformIGuess {
 
                     case 3:
                         randomitem = Items.IRON_SPEAR;
+                        break;
+                    case 4 :
+                        randomitem =Items.EXPOSED_COPPER_GRATE;
                         break;
 
                     default:

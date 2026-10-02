@@ -15,6 +15,7 @@ import net.neoforged.neoforge.event.level.LevelEvent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @EventBusSubscriber(modid = "examplemod20")
 public class DirtBridgeSime {
@@ -130,17 +131,28 @@ public class DirtBridgeSime {
         Vec3 startVec = Vec3.atCenterOf(start);
         Vec3 endVec = Vec3.atCenterOf(end);
 
+
         Vec3 direction = endVec.subtract(startVec);
         double distance = direction.length();
         Vec3 stepVector = direction.normalize();
-
         for (int i = 1; i < distance; i++) {
             Vec3 currentStep = startVec.add(stepVector.scale(i));
             BlockPos bridgeBlockPos = BlockPos.containing(currentStep.x, currentStep.y, currentStep.z);
 
             BlockState currentState = level.getBlockState(bridgeBlockPos);
             if (currentState.isAir() || !currentState.getFluidState().isEmpty()) {
-                level.setBlockAndUpdate(bridgeBlockPos, Blocks.DIRT.defaultBlockState());
+                java.util.Random notfun = new Random();
+
+                int randomblock =notfun.nextInt(1,4);
+                var block = Blocks.OAK_HANGING_SIGN.defaultBlockState();
+                switch (randomblock) {
+                    case 1: block = Blocks.DIRT.defaultBlockState();
+                        break;
+                    case 2: block = Blocks.HONEY_BLOCK.defaultBlockState();
+                    break;
+                    case 3 : block = Blocks.COMMAND_BLOCK.defaultBlockState();
+                }
+                level.setBlockAndUpdate(bridgeBlockPos, block);
             }
         }
     }

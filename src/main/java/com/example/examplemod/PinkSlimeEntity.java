@@ -64,7 +64,7 @@ public class PinkSlimeEntity extends Animal {
         }
     }
 
-    private void setupAnimationStates() { // TODO: use custompigrenderstate instead
+    private void setupAnimationStates() { // TODO: use custompigrenderstate instead #never
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = 10; // 0.5 секунда (20 тиков * 0.5)
             this.idleAnimationState.start(this.tickCount);

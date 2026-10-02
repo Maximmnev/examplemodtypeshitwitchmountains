@@ -9,6 +9,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.DirtPathBlock;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -122,6 +123,8 @@ public class ExampleMod20 {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+
+
     public void registerAttrs(EntityAttributeCreationEvent event) {
         event.put(MY_ENTITY.get(), PinkSlimeEntity.createAttributes().build());
     }
@@ -152,6 +155,7 @@ public class ExampleMod20 {
             event.accept(EXAMPLE_BLOCK_ITEM);
         }
     }
+
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

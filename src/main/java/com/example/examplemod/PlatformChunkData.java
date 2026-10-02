@@ -11,12 +11,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Хранит список чанков, в которых платформы уже сгенерированы.
- *
- * Это "SavedData" — игра САМА сохраняет его в файл <мир>/data/examplemod20_platforms.dat
- * при сохранении мира и САМА загружает обратно при заходе в мир. Ручной работы с файлами нет.
- * Хранилище своё у каждого измерения (overworld / nether / end).
+/**no comments
  */
 public class PlatformChunkData extends SavedData {
 
