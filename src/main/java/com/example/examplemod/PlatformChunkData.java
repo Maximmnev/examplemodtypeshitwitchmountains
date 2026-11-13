@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-/**no comments
- */
 public class PlatformChunkData extends SavedData {
 
     // Каждый ChunkPos упакован в одно число long (так компактнее и проще сохранять).
